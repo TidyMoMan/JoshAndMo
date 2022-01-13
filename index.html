@@ -5,42 +5,50 @@
         JoshAndMo
     </title>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser.min.js"></script>
-  
+
 </head>
+
 <body>
 
     <div id="game">
         <script>
-           var config = {
-    width: 800,
-    height: 600,
-    type: Phaser.AUTO,
-    //parent: 'phaser-example',
-    scene: {
-        create: create,
-        update: update
-    }
-};
+            var config = {
+                width: 1320,
+                height: 700,
+                type: Phaser.AUTO,
+                //parent: 'phaser-example',
+                scene: {
+                    create: create,
+                    update: update
+                },
+                scale: {
+                    mode: Phaser.Scale.FIT,
 
-var game = new Phaser.Game(config);
-var graphics;
-var line;
+                }
+            };
 
-function create ()
-{
-    graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
+            var game = new Phaser.Game(config);
+            // var graphics;
+            // var line;
+            var JAMlogo;
 
-    line = new Phaser.Geom.Line(200, 300, 600, 300);
-}
+            function create() {
+                const screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
+                const screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
+                // graphics = this.add.graphics({ lineStyle: { width: 4, color: 0xaa00aa } });
+                // line = new Phaser.Geom.Line(200, 300, 600, 300);
+                JAMlogo = this.add.text(screenCenterX, screenCenterY, "A Josh And Moses Production", { fontFamily: 'VT323', fontSize: 70, color: '#ecf542' }).setOrigin(0.5);
 
-function update ()
-{
-    Phaser.Geom.Line.Rotate(line, 0.02);
+            }
 
-    graphics.clear();
+            function update() {
+                JAMlogo.rotation += 0.01;
+                // Phaser.Geom.Line.Rotate(line, 0.02);
 
-    graphics.strokeLineShape(line);
-}
+                // graphics.clear();
+
+                // graphics.strokeLineShape(line);
+            }
 
         </script>
     </div>
